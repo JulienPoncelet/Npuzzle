@@ -1,6 +1,7 @@
 module Heuristiques
 	def manhattan(grid1, grid2)
 		distance = 0
+
 		(0...size * size).each do |m|
 			x1, y1 = b(m)
 			x2, y2 = b(findPos(grid2, grid1[m]))

@@ -11,8 +11,13 @@ module Solver
 			close[currentGrid] = open.delete currentGrid
 			checkAdjacents(currentGrid)
 
+			if nbTotal < open.size + close.size
+				@nbTotal = open.size + close.size
+			end
+
 			if currentGrid == endGrid
 				puts "WIN"
+				path = recoverPath
 				exit
 			end
 
@@ -31,14 +36,18 @@ module Solver
 
 			adjNode = Node.new
 			adjNode.g = close[parent].g + 2
-			adjNode.h = manhattan(adj, endGrid)
+			adjNode.h = manhattan(adj, endGrid) * 10
 			adjNode.f = adjNode.g + adjNode.h
 			adjNode.parent = Array.new(parent)
 
 			if open[adj].nil?
 				open[adj] = adjNode
+				@nbOpen  += 1
 			else
-				open[adj] = adjNode if (adjNode.f < open[adj].f)
+				if (adjNode.f < open[adj].f)
+					open[adj] = adjNode
+					@nbOpen  += 1
+				end
 			end
 		end
 	end
@@ -80,5 +89,17 @@ module Solver
 		end
 
 		adjacents
+	end
+
+	def recoverPath
+		path = Array.new
+		currentGrid = endGrid
+		while currentGrid != startGrid
+			path << currentGrid
+			currentGrid = close[currentGrid].parent
+		end
+		puts nbOpen
+		puts nbTotal
+		puts path.size
 	end
 end

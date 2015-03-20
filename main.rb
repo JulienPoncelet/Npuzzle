@@ -1,11 +1,11 @@
 require "pp"
-require "byebug"
+# require "byebug"
 
 require "./Npuzzle.rb"
 
-begin
+# begin
 	npuzzle = Npuzzle.new
 	npuzzle.start
-rescue => error
-	puts error
-end
+# rescue => error
+	# puts error
+# end

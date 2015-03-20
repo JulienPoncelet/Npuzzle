@@ -10,20 +10,20 @@ module Input
 	end
 
 	def fillStartGrid
-		@size = 3
+		@size = 4
 		# @startGrid = [7, 6, 3,
 		# 			  			8, 0, 5,
 		# 						  1, 4, 2]
 		# @startGrid = [1, 5, 6,
 		# 			  			3, 7, 4,
 		# 						  8, 2, 0]
-		# @startGrid = [8, 12, 9, 5,
-		# 			  			3, 13, 1, 4,
-		# 						  6, 0, 15, 11,
-		# 							2, 14, 7, 10]
-		@startGrid = [3, 7, 0,
-					  			2, 8, 6,
-								  4, 5, 1]
+		@startGrid = [4, 15, 1, 2,
+					  0, 14, 8, 13,
+					  10, 12, 3, 9,
+					  11, 5, 7, 6]
+		# @startGrid = [3, 7, 0,
+		# 			  			2, 8, 6,
+		# 						  4, 5, 1]
 	end
 
 
@@ -70,6 +70,8 @@ module Input
 			end
 		end
 
+
 		@endGrid[findPos(endGrid, size * size)] = 0
+		@endGrid = [1, 2, 3, 4, 12, 13, 14, 5, 11, 0, 15, 6, 10, 9, 8, 7]
 	end
 end

@@ -9,14 +9,16 @@ class Npuzzle
 	include Input
 	include Solver
 	include Heuristiques
-	attr_accessor :startGrid, :endGrid, :size, :open, :close
+	attr_accessor :startGrid, :endGrid, :size, :open, :close, :nbOpen, :nbTotal
 
 	def initialize
-		@startGrid 	= Array.new
+		@startGrid 		= Array.new
 		@endGrid 		= Array.new
 		@size 			= 0
 		@open 			= Hash.new
 		@close 			= Hash.new
+		@nbOpen			= 0
+		@nbTotal		= 0
 	end
 
 	def start
