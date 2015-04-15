@@ -9,9 +9,10 @@ class Npuzzle
 	include Input
 	include Solver
 	include Heuristiques
-	attr_accessor :startGrid, :endGrid, :size, :open, :close, :nbOpen, :nbTotal
+	attr_accessor :filename, :startGrid, :endGrid, :size, :open, :close, :nbOpen, :nbTotal
 
-	def initialize
+	def initialize(filename)
+		@filename       = filename
 		@startGrid 		= Array.new
 		@endGrid 		= Array.new
 		@size 			= 0

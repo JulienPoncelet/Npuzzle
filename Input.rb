@@ -1,29 +1,19 @@
 module Input
 	def useInput
-		checkFile
 		fillStartGrid
 		fillEndGrid
 	end
 
-	def checkFile
-		# TODO
-	end
-
 	def fillStartGrid
-		@size = 4
-		# @startGrid = [7, 6, 3,
-		# 			  			8, 0, 5,
-		# 						  1, 4, 2]
-		# @startGrid = [1, 5, 6,
-		# 			  			3, 7, 4,
-		# 						  8, 2, 0]
-		@startGrid = [4, 15, 1, 2,
-					  0, 14, 8, 13,
-					  10, 12, 3, 9,
-					  11, 5, 7, 6]
-		# @startGrid = [3, 7, 0,
-		# 			  			2, 8, 6,
-		# 						  4, 5, 1]
+		File.read(filename).each_line do |line|
+			line.chomp!
+			next if line[0] == '#'
+			if @size < 3
+				@size = line.to_i
+			else
+				line.split(' ').each { |n| @startGrid << n.to_i}
+			end
+		end
 	end
 
 
@@ -72,6 +62,5 @@ module Input
 
 
 		@endGrid[findPos(endGrid, size * size)] = 0
-		@endGrid = [1, 2, 3, 4, 12, 13, 14, 5, 11, 0, 15, 6, 10, 9, 8, 7]
 	end
 end
